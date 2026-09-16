@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.env
+.env.local
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+# 실행 산출물(재생성 가능)
+**/lab/
+**/*_lab/
+*.pcap
+*.pkl
+output/
+labs/cve_db/cve.db

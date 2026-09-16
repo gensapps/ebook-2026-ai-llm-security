@@ -1,0 +1,41 @@
+# 「바이브 코딩의 시대, AI/ML·LLM 기반 보안 자동화」 실습 환경 (Python 3.11+)
+#   설치:  pip install -r requirements.txt
+#   Colab: 대부분 사전 설치되어 있어 누락분만 설치된다.
+# 버전은 최소 요구치(>=)로, 검증 환경보다 낮지 않으면 API 호환된다.
+#
+# 챕터 구분은 4 Part · 29 챕터 체제를 따른다. 네트워크 패킷·데이터 분석 실습은
+# 전작 『바이브 코딩으로 만드는 AI 네트워크 보안』으로 이관돼 이 책에는 없으므로,
+# scapy 등 그 영역의 의존성은 여기 두지 않는다.
+
+# --- 공통 (전 챕터) ---
+numpy>=1.26
+pandas>=2.0
+scikit-learn>=1.3
+scipy>=1.11
+matplotlib>=3.7
+requests>=2.31
+python-dotenv>=1.0
+
+# --- Part II LLM·RAG·Agent 핵심 스택 (ch09~ch13) ---
+anthropic>=1.0          # 1.x 는 temperature 등 샘플링 인자를 정의하지 않는다 — 본문 ch09 §9.2.2
+chromadb>=0.5
+sentence-transformers>=2.2
+
+# --- Part III 확장 기법 (ch14~ch23) ---
+mcp>=1.0,<2           # ch14 MCP 서버·게이트웨이 — 본문은 1.x API(@server.list_tools). 2.x 는 API 가 달라 상한 고정
+jsonschema>=4.0       # ch14·ch27 tool 출력 스키마 검증
+cryptography>=42.0    # ch19 AI 공급망 — 모델 서명·무결성
+safetensors>=0.4      # ch19 AI 공급망 — 안전한 가중치 로드(pickle 코드실행 회피)
+
+# --- Part III·IV 로컬 LLM (ch15 Multi-Agent, ch24 Mythos lab) ---
+# 미설치 시 각 노트북이 자동으로 mock 으로 폴백한다.
+ollama>=0.3
+
+# --- 노트북 실행/변환 도구 (저자·강사용, 학습자는 불필요) ---
+nbformat>=5.9
+nbconvert>=7.0
+
+# --- 선택 의존성 (있으면 해당 실습 활성화, 없으면 자동 mock/대체) ---
+# python-nmap>=0.7        # ch24 실제 nmap 스캔 경로 (기본은 mock)
+# garak>=0.9              # ch18 적대적 테스트 — 외부 probe 모음
+# tensorflow>=2.15        # ch18 AutoEncoder 이상탐지 대안 경로

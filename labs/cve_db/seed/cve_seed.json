@@ -1,0 +1,68 @@
+[
+  {
+    "id": "CVE-2021-44228",
+    "name": "Log4Shell",
+    "cvss": 10.0,
+    "cwe": "CWE-502",
+    "product": "Apache Log4j2",
+    "affected": "2.0-beta9 ~ 2.14.1",
+    "description": "Log4j2 의 JNDI lookup 기능이 로그 메시지에 포함된 ${jndi:ldap://...} 문자열을 해석해 원격 클래스를 로드·실행한다. 인증 없이 RCE 가 가능하다.",
+    "attack_pattern": "log4j jndi ldap ${jndi} rce",
+    "reference": "https://nvd.nist.gov/vuln/detail/CVE-2021-44228"
+  },
+  {
+    "id": "CVE-2017-5638",
+    "name": "Struts2 S2-045",
+    "cvss": 10.0,
+    "cwe": "CWE-20",
+    "product": "Apache Struts 2",
+    "affected": "2.3.5 ~ 2.3.31, 2.5 ~ 2.5.10",
+    "description": "Jakarta Multipart parser 가 Content-Type 헤더의 OGNL 표현식을 평가해 원격 코드 실행을 허용한다. Equifax 침해(2017)의 원인으로 알려졌다.",
+    "attack_pattern": "struts content-type ognl multipart rce",
+    "reference": "https://nvd.nist.gov/vuln/detail/CVE-2017-5638"
+  },
+  {
+    "id": "CVE-2014-0160",
+    "name": "Heartbleed",
+    "cvss": 7.5,
+    "cwe": "CWE-125",
+    "product": "OpenSSL",
+    "affected": "1.0.1 ~ 1.0.1f",
+    "description": "TLS heartbeat 확장의 경계 검사 누락으로 서버 메모리를 최대 64KB 씩 읽어 개인키·세션·비밀번호가 유출될 수 있다.",
+    "attack_pattern": "openssl tls heartbeat memory disclosure",
+    "reference": "https://nvd.nist.gov/vuln/detail/CVE-2014-0160"
+  },
+  {
+    "id": "CVE-2019-0708",
+    "name": "BlueKeep",
+    "cvss": 9.8,
+    "cwe": "CWE-416",
+    "product": "Microsoft RDP",
+    "affected": "Windows 7, Server 2008/R2, XP",
+    "description": "원격 데스크톱 서비스(RDP)의 use-after-free 로 인증 전 원격 코드 실행이 가능하며 웜처럼 자가 전파될 수 있다.",
+    "attack_pattern": "rdp remote desktop use-after-free wormable",
+    "reference": "https://nvd.nist.gov/vuln/detail/CVE-2019-0708"
+  },
+  {
+    "id": "CVE-2022-22965",
+    "name": "Spring4Shell",
+    "cvss": 9.8,
+    "cwe": "CWE-94",
+    "product": "Spring Framework",
+    "affected": "5.3.0 ~ 5.3.17, 5.2.0 ~ 5.2.19",
+    "description": "JDK 9+ 에서 data binding 을 통해 ClassLoader 속성을 조작, 원격 코드 실행이 가능하다.",
+    "attack_pattern": "spring data binding classloader rce",
+    "reference": "https://nvd.nist.gov/vuln/detail/CVE-2022-22965"
+  },
+  {
+    "id": "CVE-2018-7600",
+    "name": "Drupalgeddon2",
+    "cvss": 9.8,
+    "cwe": "CWE-20",
+    "product": "Drupal",
+    "affected": "6.x, 7.x < 7.58, 8.x < 8.5.1",
+    "description": "요청 파라미터의 불충분한 검증으로 다수 하위 시스템에서 인증 없이 원격 코드 실행이 가능하다.",
+    "attack_pattern": "drupal form api render array rce",
+    "reference": "https://nvd.nist.gov/vuln/detail/CVE-2018-7600"
+  }
+]

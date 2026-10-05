@@ -4,7 +4,7 @@
 #       내부 네트워크(internal)와 127.0.0.1 바인딩으로만 띄운다. 외부 노출 금지.
 #
 # 실행: docker compose up -d   (실습 VM 안에서만)
-#       이후 python run_lab.py --live  (라이브 모드는 별도 확장; 기본 데모는 시뮬레이션)
+#       run_lab.py는 시뮬레이션이며 --live 옵션은 제공하지 않는다.
 
 services:
   web-dvwa:
@@ -34,4 +34,4 @@ services:
 
 networks:
   lab_internal:
-    internal: true      # 외부 라우팅 차단 — 격리 보장
+    internal: true      # 외부 라우팅 차단; 호스트·볼륨·권한은 별도 점검

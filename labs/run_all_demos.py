@@ -52,9 +52,13 @@ def main() -> int:
                 runpy.run_path(str(ROOT / rel), run_name="__main__")
             print(f"  OK   {label:<28} ({rel})")
             ok += 1
-        except SystemExit:
-            print(f"  OK   {label:<28} ({rel})")
-            ok += 1
+        except SystemExit as exc:
+            if exc.code in (None, 0):
+                print(f"  OK   {label:<28} ({rel})")
+                ok += 1
+            else:
+                print(f"  FAIL {label:<28} ({rel}) exit={exc.code}")
+                fail += 1
         except Exception:
             print(f"  FAIL {label:<28} ({rel})")
             traceback.print_exc()

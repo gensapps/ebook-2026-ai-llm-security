@@ -19,6 +19,11 @@ def _extract_features(log: dict) -> list:
 
 
 def incremental_retrain(model_path: str, new_samples: list) -> int:
+    # 사람 검토를 마친 확정 라벨만 학습한다. 미확인 판정을 공격으로 바꾸지 않는다.
+    allowed = {"BENIGN", "SQLi", "XSS", "CMDi", "RCE", "SSRF", "Brute", "Other"}
+    if not new_samples or any(s.get("label", {}).get("category") not in allowed
+                              or s["label"].get("requires_review") for s in new_samples):
+        raise ValueError("재학습에는 검토가 끝난 확정 라벨이 필요합니다")
     # 새 클론에서 _lab_logs/ 가 없어도 동작하도록 상위 디렉터리를 먼저 만든다.
     Path(model_path).parent.mkdir(parents=True, exist_ok=True)
     if _USE_MOCK or not Path(model_path).exists():

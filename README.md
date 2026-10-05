@@ -6,7 +6,7 @@ AI/ML 탐지부터 LLM·RAG·Agent 자동 대응까지 직접 실행해 볼 수 
 
 - `notebooks/exercises/` — **실습본**: 빈칸(TODO)과 힌트가 들어 있어 직접 채우며 학습합니다.
 - `notebooks/solutions/` — **완성본**: 정답 코드와 실행 결과가 들어 있습니다.
-- `labs/` — **실서비스 코드**: 공유 CVE 지식베이스를 근거로 레드팀 Agent 와 블루팀 Agent 가
+- `labs/` — **실습 코드**: 공유 CVE 지식베이스를 근거로 레드팀 Agent 와 블루팀 Agent 가
   공격·방어하는 데모입니다. `python labs/run_lab.py` 는 API 키 없이 바로 실행됩니다.
 
 ## 빠른 시작
@@ -36,7 +36,9 @@ ch15(Multi-Agent)·ch24(Mythos lab)는 로컬 LLM(Ollama llama3.2:3b)을 함께 
 
 ### 라이브러리 버전
 
-`requirements.txt` 는 검증한 메이저 버전에 맞춰 두었습니다.
+`requirements.txt`는 최소 요구치입니다. 검증 이력·모드와 재실행 범위는
+[`notebooks/ENVIRONMENT.md`](notebooks/ENVIRONMENT.md)를 확인하세요.
+`RELEASE.json`에서 이 배포본의 파일 해시를 확인할 수 있습니다.
 
 - **anthropic 1.x** — 1.0 부터 `temperature`·`top_p`·`top_k` 인자가 없어졌습니다. 이 저장소의 코드는
   이 인자를 쓰지 않고, 응답은 `type == 'text'` 인 블록만 모아 읽습니다(Opus 5·Sonnet 5 는 응답 앞에
@@ -54,17 +56,19 @@ python labs/run_all_demos.py    # 챕터별 모듈 21개 mock 스모크 테스�
 ```
 
 레드가 공유 CVE corpus 에서 취약점을 골라 공격하고, 블루가 같은 corpus 로 탐지·차단·self-heal
-하는 과정을 라운드별 표로 출력합니다. 실제 취약 컨테이너는 `labs/docker-compose.yml`
+하는 합성 시뮬레이션을 라운드별 표로 출력합니다. `--live` 옵션은 없으며 Docker 표적과
+자동 연결되지 않습니다. 별도 확장을 위한 취약 컨테이너는 `labs/docker-compose.yml`
 (vulhub/vulfocus)로 실행하며, 반드시 인터넷이 차단된 격리 네트워크에서만 구동해야 합니다.
 
 ## 데이터
 
-실습 데이터는 노트북 안에서 **합성 생성**되므로 외부 다운로드가 필요 없습니다. 정상·공격 분포를
+실습 데이터는 노트북 안에서 **합성 생성**됩니다. 임베딩 모델·Ollama 모델·컨테이너 이미지는
+처음 실행할 때 별도로 내려받아야 합니다. 정상·공격 분포를
 의도적으로 겹치게 만들어 비현실적인 100% 분리를 피했습니다.
 
 ## 주의 (법적·윤리)
 
-모든 공격 실습은 **합성 데이터** 또는 **격리 환경**(ch24·ch27, labs/ 는 인터넷 차단 Docker)에서만
+모든 공격 실습은 **합성 데이터** 또는 사용자가 구성·확인한 **격리 환경**에서만
 수행합니다. 실제 운영 네트워크를 대상으로 한 스캔·패킷 주입·공격은 금지됩니다.
 
 ## 라이선스

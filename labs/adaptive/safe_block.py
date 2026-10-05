@@ -8,6 +8,8 @@ import json
 import os
 import subprocess
 import time
+import ipaddress
+import math
 from pathlib import Path
 
 ROLLBACK_LOG = Path(os.environ.get("LAB_LOGS", "./_lab_logs")) / "rollback.jsonl"
@@ -15,6 +17,9 @@ _DRY_RUN = os.environ.get("DRY_RUN", "1") == "1"
 
 
 def safe_block(ip: str, reason: str, ttl_sec: int = 300) -> dict:
+    ip = str(ipaddress.IPv4Address(ip))
+    if type(ttl_sec) is not int or ttl_sec <= 0:
+        raise ValueError("ttl_sec는 양의 정수여야 합니다")
     entry = {"ts": time.time(), "ip": ip, "reason": reason,
              "ttl_sec": ttl_sec, "expires": time.time() + ttl_sec, "dry_run": _DRY_RUN}
     ROLLBACK_LOG.parent.mkdir(parents=True, exist_ok=True)
@@ -24,8 +29,13 @@ def safe_block(ip: str, reason: str, ttl_sec: int = 300) -> dict:
         print(f"[dry-run] block {ip} ({reason}) TTL {ttl_sec}s — iptables 미실행")
         return entry
     subprocess.run(["iptables", "-A", "INPUT", "-s", ip, "-j", "DROP"], check=True)
-    subprocess.run(["at", f"now + {ttl_sec // 60} minutes"],
-                   input=f"iptables -D INPUT -s {ip} -j DROP".encode())
+    try:
+        subprocess.run(["at", "now", "+", str(math.ceil(ttl_sec / 60)), "minutes"],
+                       input=f"iptables -D INPUT -s {ip} -j DROP\n".encode(), check=True)
+    except (OSError, subprocess.CalledProcessError):
+        # 예약 실패 시 차단을 즉시 되돌린다. 복구 실패도 호출자에게 전파한다.
+        subprocess.run(["iptables", "-D", "INPUT", "-s", ip, "-j", "DROP"], check=True)
+        raise
     return entry
 
 

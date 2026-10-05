@@ -14,23 +14,29 @@ Docker 표적을 띄우는 것만으로 attacker·defender·Zeek가 통합되지
 Colab 노트북과 로컬 Docker 실습은 별개다. 합성 데이터에 다운로드가 필요하지 않더라도
 임베딩 모델·Ollama 모델·컨테이너 이미지는 첫 실행 전에 받아야 한다.
 
-## 기존 전체 실행 기록
+## 전체 실행 기록 (2026-10-06)
 
-2026-09-16 보고서의 환경이다. 현재 수정본의 전체 재실행을 의미하지 않는다.
+`requirements.txt`를 **빈 가상환경에 새로 설치**하고, 그 환경의 커널로 강사용 노트북
+18개를 전량 실행했다. 결과는 **18 OK · 0 FAIL · 0 SKIP**이며 `solutions/`의 완성본은
+이 실행의 출력이다.
 
-| 구성 요소 | 당시 기록 |
+| 구성 요소 | 검증 버전 |
 |---|---|
-| Python | 3.12.5 |
-| anthropic | 1.5.0 |
+| OS / Python | Linux 6.8 / 3.10.12 |
+| anthropic | 1.11.0 |
 | mcp | 1.30.0 |
 | chromadb | 1.5.9 |
-| sentence-transformers | 6.0.1 |
-| scikit-learn | 1.9.1 |
+| sentence-transformers | 6.1.0 |
+| scikit-learn | 1.7.2 |
+| numpy / pandas | 2.2.6 / 2.3.3 |
+| 로컬 모델 | ollama llama3.2:3b · 임베딩 all-MiniLM-L6-v2 |
 
-`requirements.txt`는 최소 버전 조건이며 최신 버전의 호환성을 보장하지 않는다.
-위 표는 전체 잠금 파일도 아니다. 출간용 전체 실행은 새 가상환경에서 수행하고, 그 환경의
-`python -m pip freeze` 결과와 Python·OS·모델 식별자를 함께 보관한다.
-실행하지 않은 환경을 검증된 잠금 파일로 배포하지 않는다.
+전체 `pip freeze` 결과는 저장소의 `00_planning/publication_review_lock_2026-10-06.txt`에
+있다. `requirements.txt`는 최소 버전 조건이므로, 그대로 설치하면 더 새 버전이 깔릴 수 있다.
+재현이 필요하면 잠금 파일의 버전을 그대로 쓴다.
+
+검증하지 않은 범위는 다음과 같다. 유료 API 응답의 재현성, Docker 표적을 띄우는 통합 실습,
+Colab 런타임, 다른 OS·Python 버전이다. 실행하지 않은 환경을 검증된 잠금 파일로 배포하지 않는다.
 
 ## 실행 전 확인
 

@@ -1,5 +1,6 @@
-# 「바이브 코딩의 시대, AI/ML·LLM 기반 보안 자동화」 실습 환경 (Python 3.11+)
-#   설치:  pip install -r requirements.txt
+# 「바이브 코딩의 시대, AI/ML·LLM 기반 보안 자동화」 실습 일반 설치 목록 (검증 환경: Linux · Python 3.10.12)
+#   일반 설치: pip install -r requirements.txt
+#   검증 버전 재현: 공개 배포본의 requirements-lock.txt 사용
 #   Colab: 대부분 사전 설치되어 있어 누락분만 설치된다.
 # >=는 최소 요구치이며, 새 버전의 API 호환성을 보장하지 않는다.
 # 검증 버전·실습 모드·재검증 범위는 notebooks/ENVIRONMENT.md를 참고한다.

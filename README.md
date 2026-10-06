@@ -17,15 +17,22 @@ ZIP으로 받은 경우에도 아래 명령은 압축을 푼 폴더에서 동일
 
 ## 빠른 시작
 
+전체 실행을 확인한 환경은 Linux · Python 3.10.12입니다. 같은 패키지 버전을 재현하려면
+해당 Python으로 가상환경을 만들고 아래 잠금 파일을 사용하세요.
+다른 OS·Python 버전의 실행은 별도 확인이 필요합니다.
+
 ```bash
-# Python 3.11+ 권장
+# python --version으로 3.10.12인지 확인
 python -m venv .venv
 source .venv/bin/activate            # Windows: .venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+python -m pip install -r requirements-lock.txt
 pip install jupyterlab                # 로컬에서 노트북을 열 때만 (Colab 은 불필요)
 cp .env.example .env                 # ch09 부터 LLM 실습에 키 사용; 없으면 자동 mock
 jupyter lab
 ```
+
+일반 설치에는 `requirements.txt`를 사용할 수 있지만, 최소 버전 조건이므로
+검증 당시와 다른 패키지가 설치될 수 있습니다. 자세한 범위는 `notebooks/ENVIRONMENT.md`를 확인하세요.
 
 ### Google Colab
 

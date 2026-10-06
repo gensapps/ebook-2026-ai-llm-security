@@ -1,10 +1,10 @@
 {
   "built_on": "2026-10-06",
-  "book_version": "v6",
+  "book_version": "v7",
   "files": {
     ".env.example": "e9869829fc6e0ca32b91ae2fdc8e754c5bff0a44593c66ceeda4f16ecf5ca67d",
     ".gitignore": "154ec62187aac07677a3429d833ed11bb3ba53978c700901829efbaf4f0ed13d",
-    "ERRATA.md": "3f73b39af67ea8062dca10d97178858418a6d74132666f761c0c074c98fa6ac9",
+    "ERRATA.md": "cc675cfdea5b0c4e4f408dc7de5c4def3811d24f2286f342bf545f3da794b899",
     "LICENSE": "550830e6973d14b81dc725fed2592a306c8adbe8e97de7d50850ca1494addf3d",
     "README.md": "d8dd0147289813751cd3873cd9720ec38a87e02df24bbc5751d0532237e6359b",
     "labs/README.md": "c7396fe4055a9e5925b4c27e8463c9bdcd50585e601a765d6036b7a2a6671e6c",
@@ -57,7 +57,7 @@
     "labs/tests/test_adaptive_safety.py": "36af5135c3ab3136b82e792bdba3b7c7f014dddcec49055943221c0bf735181e",
     "labs/tests/test_guardrails.py": "333496798e622715019201e99dc641e5ebd243d4987e443e91031ae86c41e2d8",
     "labs/tests/test_release_integration.py": "53b338f4468772a1e1c48c7d796c5f9755dddb54594352c1889440e13da17f46",
-    "notebooks/ENVIRONMENT.md": "0e6b4e63a973474fe524f90477b3100cb13b85dd84570bc37edfa29a91ef3b85",
+    "notebooks/ENVIRONMENT.md": "18e4e9c85d4db71e200fdef84b1dff47273856570442a3ae8821a92dc801bba7",
     "notebooks/exercises/ch09_llm_log_interpretation.ipynb": "5653ced334fc8c0346af7c18d0902df1d4d172cb3a886e9421003ab832159500",
     "notebooks/exercises/ch10_prompt_engineering_xai.ipynb": "25e84023dd9408ea02e4640a9f802d169b6dee4887fffcdc179300feb168973a",
     "notebooks/exercises/ch11_rag_threat_intelligence.ipynb": "aaea9ddc352c2187d1e8e7d879ea690bc0b9e3a9e226d148375ce72de9d26a39",

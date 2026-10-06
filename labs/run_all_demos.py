@@ -1,6 +1,6 @@
 """labs/ 전 챕터 데모를 mock 모드로 한 번에 실행해 각 모듈이 도는지 확인한다.
 
-책의 각 코드 블록이 실재 실행 파일의 발췌임을 증명하는 스모크 러너.
+배포 모듈의 mock 실행 경로를 검사하는 스모크 러너. 실제 인프라 통합 검증과는 구분한다.
     python labs/run_all_demos.py
 CI 나 릴리스 전 점검에 쓴다. 실제 인프라(nmap·ollama·CTFd·Zeek) 는 필요 없다.
 """
@@ -11,8 +11,8 @@ import sys
 import traceback
 from pathlib import Path
 
-os.environ.setdefault("MOCK", "1")
-os.environ.setdefault("DRY_RUN", "1")
+os.environ["MOCK"] = "1"  # 외부 환경의 MOCK=0을 상속해 실제 공격을 실행하지 않는다
+os.environ["DRY_RUN"] = "1"
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 

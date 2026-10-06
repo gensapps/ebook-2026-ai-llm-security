@@ -127,3 +127,16 @@ python labs/run_all_demos.py     # 21개 모듈 mock 스모크 — OK 21 / FAIL 
 > 인프라(Ollama·nmap·Zeek·CTFd)를 쓰는 "인프라 트랙"으로, 인프라가 없으면 mock 으로
 > 폴백해 같은 로직을 시연한다. 둘은 개념을 공유하되 실행 경로가 다르며, 어느 쪽이든
 > 격리 네트워크·자기 자산에서만 돌린다.
+
+## 실습 구성과 판정 범위
+
+본문 ch24 및 `docker-compose.yml`의 5개 서비스, 노트북의 3개 합성 표적,
+`attacker/agent/`의 4개 `tgt-*` 표적은 별도 예제입니다. Docker 실행만으로 연결되지 않습니다.
+`auto_pentest.py`는 허용 표적·중단·LLM 스키마·속도 제한을 검사하고 실제 exploit 전에
+사람 승인을 받습니다(`--auto`는 격리 실습의 명시적 자동 승인). 기본 `MOCK=1`에서는 전송하지 않습니다.
+`auto_defend.py`는 규칙 기반 flow 데모입니다. 실제 conn.log의 service 필드는 HTTP 페이로드가
+아니므로 이 파일만으로 SQLi/RCE 탐지율을 검증할 수 없습니다. 실제 로그가 없으면 MOCK=0은 실패합니다.
+점수는 표적 단위입니다. 공격 호스트명과 방어 IP를 연결하려면 실습에서 기록한 매핑 JSON을
+`TARGET_MAP=/path/to/target-map.json`으로 지정하세요. 다른 실행의 감사 로그는 섞지 않습니다.
+ch27 노트북의 `model`+`vec` 아티팩트는 `adaptive.incremental_train`에서 텍스트 특징으로 재학습합니다.
+기존 `model`+`preprocessor` 수치 특징 형식도 지원합니다. 신뢰하는 모델 파일만 로드하세요.

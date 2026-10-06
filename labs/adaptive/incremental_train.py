@@ -1,6 +1,7 @@
 """증분 재학습 (ch27 §27.6) — 새 라벨 데이터로 1차 분류기를 업데이트.
 
-sklearn/pickle 이 없거나 모델 파일이 없으면, 재학습 이력만 기록하는 mock 으로 폴백한다.
+기본 MOCK=1에서는 재학습 이력만 기록한다. MOCK=0에서는 저장 모델이 필요하며,
+모델·의존성 오류를 합성 성공으로 바꾸지 않는다.
 """
 from __future__ import annotations
 import os
@@ -26,7 +27,7 @@ def incremental_retrain(model_path: str, new_samples: list) -> int:
         raise ValueError("재학습에는 검토가 끝난 확정 라벨이 필요합니다")
     # 새 클론에서 _lab_logs/ 가 없어도 동작하도록 상위 디렉터리를 먼저 만든다.
     Path(model_path).parent.mkdir(parents=True, exist_ok=True)
-    if _USE_MOCK or not Path(model_path).exists():
+    if _USE_MOCK:
         # mock: 버전만 올리고 학습 데이터 수를 기록
         meta = Path(model_path + ".meta")
         ver = int(meta.read_text().strip()) + 1 if meta.exists() else 2
@@ -36,7 +37,12 @@ def incremental_retrain(model_path: str, new_samples: list) -> int:
     with open(model_path, "rb") as f:
         artifact = pickle.load(f)
     model = artifact["model"]
-    X_new = artifact["preprocessor"].transform([_extract_features(s["log"]) for s in new_samples])
+    if "vec" in artifact:  # ch27 노트북: 텍스트 HashingVectorizer
+        X_new = artifact["vec"].transform([str(s["log"].get("payload", "")) for s in new_samples])
+    elif "preprocessor" in artifact:  # 수치 특징을 사용하는 별도 모델
+        X_new = artifact["preprocessor"].transform([_extract_features(s["log"]) for s in new_samples])
+    else:
+        raise ValueError("모델에는 vec 또는 preprocessor가 필요합니다")
     y_new = [1 if s["label"]["category"] != "BENIGN" else 0 for s in new_samples]
     model.partial_fit(X_new, y_new, classes=[0, 1])
     artifact["model"] = model

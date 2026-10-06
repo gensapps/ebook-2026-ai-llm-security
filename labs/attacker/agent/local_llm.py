@@ -1,7 +1,7 @@
 """로컬 LLM 호출 — 자동 공격 에이전트의 판단 두뇌 (ch24 §24.5.1).
 
-본문 스니펫은 ollama.Client 를 직접 부르지만, 이 파일은 **ollama 가 없으면
-결정론적 mock 으로 폴백**해 nmap/ollama 없이도 데모가 돌아가게 한다.
+기본 MOCK=1에서는 **결정론적 mock**으로 nmap/ollama 없이도 데모가 돌아간다.
+MOCK=0에서는 ollama 설치·연결 오류를 그대로 보고한다.
 실제 로컬 모델을 쓰려면 `ollama pull llama3.2:3b` 후 MOCK=0 으로 실행한다.
 """
 from __future__ import annotations
@@ -36,7 +36,7 @@ def _mock_llm_json(prompt: str) -> dict:
 
 
 def llm(prompt: str, max_tokens: int = 512, system_override: str | None = None) -> str:
-    if _USE_MOCK or not _HAS_OLLAMA:
+    if _USE_MOCK:
         return json.dumps(_mock_llm_json(prompt), ensure_ascii=False)
     import ollama
     client = ollama.Client(host="http://localhost:11434")

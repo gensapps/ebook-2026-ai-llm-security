@@ -1,7 +1,7 @@
 """Zeek conn.log 파서 (ch24 §24.6.1).
 
-본문 스니펫은 실시간 tail 을 하지만, 이 파일은 conn.log 가 없으면 **mock flow 생성기**로
-폴백해 데모가 돌게 한다. 실제 Zeek 로그를 쓰려면 ZEEK_LOG 를 지정하고 MOCK=0 으로 실행한다.
+기본 MOCK=1에서는 **mock flow 생성기**로 데모를 실행한다.
+MOCK=0에서는 로그가 없으면 실패하며 합성 결과로 바꾸지 않는다. 실제 Zeek 로그를 쓰려면 ZEEK_LOG 를 지정하고 MOCK=0 으로 실행한다.
 """
 from __future__ import annotations
 import os, time
@@ -36,7 +36,7 @@ def parse_conn_line(line: str) -> dict:
 
 def stream_conn_log(follow: bool = False):
     """conn.log 를 읽어 각 flow 를 yield. mock 모드면 내장 샘플을 준다."""
-    if _USE_MOCK or not ZEEK_LOG.exists():
+    if _USE_MOCK:
         yield from _MOCK_CONNS
         return
     with ZEEK_LOG.open() as fp:

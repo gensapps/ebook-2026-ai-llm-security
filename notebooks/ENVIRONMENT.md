@@ -16,8 +16,8 @@ Colab 노트북과 로컬 Docker 실습은 별개다. 합성 데이터에 다운
 
 ## 전체 실행 기록 (2026-10-06)
 
-`requirements.txt`를 **빈 가상환경에 새로 설치**하고, 그 환경의 커널로 강사용 노트북
-18개를 전량 실행했다. 결과는 **18 OK · 0 FAIL · 0 SKIP**이며 `solutions/`의 완성본은
+`requirements.txt` 기준으로 확정한 잠금 파일을 **시스템 패키지가 없는 새 가상환경에 설치**하고,
+그 Python의 절대 경로를 커널로 지정해 v4 강사용 노트북 18개를 전량 실행했다. 결과는 **18 OK · 0 FAIL · 0 SKIP**이며 `solutions/`의 완성본은
 이 실행의 출력이다.
 
 | 구성 요소 | 검증 버전 |
@@ -31,7 +31,7 @@ Colab 노트북과 로컬 Docker 실습은 별개다. 합성 데이터에 다운
 | numpy / pandas | 2.2.6 / 2.3.3 |
 | 로컬 모델 | ollama llama3.2:3b · 임베딩 all-MiniLM-L6-v2 |
 
-전체 `pip freeze` 결과는 저장소의 `00_planning/publication_review_lock_2026-10-06.txt`에
+전체 `pip freeze` 결과는 공개 배포본 루트의 `requirements-lock.txt`에
 있다. `requirements.txt`는 최소 버전 조건이므로, 그대로 설치하면 더 새 버전이 깔릴 수 있다.
 재현이 필요하면 잠금 파일의 버전을 그대로 쓴다.
 

@@ -53,3 +53,10 @@ Colab 런타임, 다른 OS·Python 버전이다. 실행하지 않은 환경을 �
 예제 저장소 이슈: <https://github.com/gensapps/ebook-2026-ai-llm-security/issues>
 장·절, 코드 판본, Python·패키지·모델 버전, 실행 모드와 오류를 적는다. API 키·실제 로그는 제외한다.
 ZIP의 `RELEASE.json`은 파일별 SHA-256을 제공한다. 서로 다른 날짜의 PDF와 ZIP을 혼용하지 않는다.
+
+## v5 배포 안내
+
+v5는 본문·점수 정의·예제 안내를 교정한 판본입니다. 노트북 코드와 저장된 출력은
+v4에서 전체 실행한 것과 동일하며, 위 실행 기록을 그대로 적용합니다.
+본문의 표적 단위 점수 계산은 배포된 `labs/defender/score.py`와 같은 코드입니다.
+정정 이력과 제보 방법은 배포 루트의 `ERRATA.md`를 참고하세요.

@@ -1,11 +1,12 @@
 {
   "built_on": "2026-10-06",
-  "book_version": "v4",
+  "book_version": "v5",
   "files": {
     ".env.example": "e9869829fc6e0ca32b91ae2fdc8e754c5bff0a44593c66ceeda4f16ecf5ca67d",
     ".gitignore": "154ec62187aac07677a3429d833ed11bb3ba53978c700901829efbaf4f0ed13d",
+    "ERRATA.md": "22872d8d14df865ca17642b010b7b26ac4ed2ccee1414bf938253e4bf471ca8f",
     "LICENSE": "550830e6973d14b81dc725fed2592a306c8adbe8e97de7d50850ca1494addf3d",
-    "README.md": "2ffbbdd9187b701f575467616b115c98e2a6318c34e1e723c500693416016b1c",
+    "README.md": "f34a3409d2b1017e803aa1c8c5d705e4de523f6a2c53b2f36358933fffd6b5c0",
     "labs/README.md": "c7396fe4055a9e5925b4c27e8463c9bdcd50585e601a765d6036b7a2a6671e6c",
     "labs/adaptive/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "labs/adaptive/analyze_unknown.py": "cda325f8079fc165354429af947ed331a781016cde8326b86f2ec859cc3ac74b",
@@ -56,7 +57,7 @@
     "labs/tests/test_adaptive_safety.py": "36af5135c3ab3136b82e792bdba3b7c7f014dddcec49055943221c0bf735181e",
     "labs/tests/test_guardrails.py": "333496798e622715019201e99dc641e5ebd243d4987e443e91031ae86c41e2d8",
     "labs/tests/test_release_integration.py": "53b338f4468772a1e1c48c7d796c5f9755dddb54594352c1889440e13da17f46",
-    "notebooks/ENVIRONMENT.md": "d3b209ba1606e71027ad7065cd32917e0c67ad726a95c5b10f54ce896c1a1544",
+    "notebooks/ENVIRONMENT.md": "45287b032ce488a5b41594b653fcf5b2930ebbcc1572fe60217441d71c660c25",
     "notebooks/exercises/ch09_llm_log_interpretation.ipynb": "5653ced334fc8c0346af7c18d0902df1d4d172cb3a886e9421003ab832159500",
     "notebooks/exercises/ch10_prompt_engineering_xai.ipynb": "25e84023dd9408ea02e4640a9f802d169b6dee4887fffcdc179300feb168973a",
     "notebooks/exercises/ch11_rag_threat_intelligence.ipynb": "aaea9ddc352c2187d1e8e7d879ea690bc0b9e3a9e226d148375ce72de9d26a39",

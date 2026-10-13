@@ -1,8 +1,8 @@
 """SecurityAssistant — lab 용 경량 구현 (ch13 캡스톤의 실행 가능한 축소판).
 
-ch13 본문의 SecurityAssistant 는 전작 ch13 pickle(ML) + ch11 ChromaDB(RAG) +
-ch09 Claude(LLM) + ch12 Agent 를 통합한다. 이 lab 판은 외부 의존(pickle·chromadb·
-anthropic) 이 없어도 돌도록 ML 1차를 규칙 기반 mock 으로 대체한 것이다. 실제 통합본은
+ch13 본문은 전작 13장 이진 RF + ChromaDB + Claude + 승인 게이트를 통합한다.
+이 경량 lab은 기본 ML을 규칙으로 대체하며, 모델 경로를 지정하면 실제 RF를 읽는다.
+RAG·LLM·외부 대응은 연결하지 않는다. RAG·LLM 연결은
 ch13 노트북(notebooks/instructor/ch13_security_assistant_capstone.ipynb) 에 있다.
 
 route 규칙은 ch13 §13.1 과 동일하다: ml<0.3 → pass, ml>0.9 → auto, 그 사이 → 검토.
@@ -20,14 +20,22 @@ _ATTACK_HINTS = (
 class SecurityAssistant:
     def __init__(self, ml_model_path: str | None = None, chroma_path: str | None = None,
                  anthropic_api_key: str | None = None, dry_run: bool = True):
-        # lab 판은 ML/RAG/LLM 자원을 mock 으로 대체하므로 앞 세 인자는 받되 무시한다.
-        # 실제 통합본(ch13 노트북)은 이 인자로 pickle·ChromaDB·Claude 를 연결한다.
+        # 명시한 모델 경로는 실제로 읽는다. RAG·LLM·대응은 이 경량 lab의 모의 경로다.
+        self.scorer = None
+        if ml_model_path is not None:
+            try:
+                from .artifact_model import BinaryArtifactScorer
+            except ImportError:
+                from artifact_model import BinaryArtifactScorer
+            self.scorer = BinaryArtifactScorer(ml_model_path)
         self.ml_model_path = ml_model_path
         self.chroma_path = chroma_path
         self.dry_run = dry_run
         self.audit_log: list[dict] = []
 
     def _ml_score(self, event: dict) -> float:
+        if self.scorer is not None:
+            return self.scorer(event)
         blob = " ".join(str(v) for v in event.values()).lower()
         return max((s for h, s in _ATTACK_HINTS if h in blob), default=0.1)
 
@@ -37,7 +45,7 @@ class SecurityAssistant:
             verdict = {"route": "pass", "ml": s, "verdict": "BENIGN"}
         elif s > 0.9:
             verdict = {"route": "auto", "ml": s, "verdict": "ATTACK",
-                       "action": "block" if not self.dry_run else "dry-run-block"}
+                       "action": "simulated-block"}
         else:
             verdict = {"route": "review", "ml": s, "verdict": "SUSPECT"}
         self.audit_log.append({"event": event, "verdict": verdict})

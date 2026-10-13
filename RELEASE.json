@@ -1,10 +1,10 @@
 {
-  "built_on": "2026-10-07",
-  "book_version": "v8",
+  "built_on": "2026-10-13",
+  "book_version": "v9",
   "files": {
     ".env.example": "e9869829fc6e0ca32b91ae2fdc8e754c5bff0a44593c66ceeda4f16ecf5ca67d",
     ".gitignore": "154ec62187aac07677a3429d833ed11bb3ba53978c700901829efbaf4f0ed13d",
-    "ERRATA.md": "d34cd45a8475572572fa045dd904a0697cf9bbfacbe78967e6782d1b35f40679",
+    "ERRATA.md": "b6e3f39d2295cf17e0cc9c44cd27a166a736ebe720d13088b91dbbb6b6708b92",
     "LICENSE": "550830e6973d14b81dc725fed2592a306c8adbe8e97de7d50850ca1494addf3d",
     "README.md": "d8dd0147289813751cd3873cd9720ec38a87e02df24bbc5751d0532237e6359b",
     "labs/README.md": "c7396fe4055a9e5925b4c27e8463c9bdcd50585e601a765d6036b7a2a6671e6c",

@@ -1,4 +1,4 @@
-"""전작 13장 이진 RF 산출물을 후속 도서의 로그 라우터에 연결한다."""
+"""전작 14장 이진 RF 산출물을 후속 도서의 로그 라우터에 연결한다."""
 from pathlib import Path
 import math
 import pickle

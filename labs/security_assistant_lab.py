@@ -1,6 +1,6 @@
 """SecurityAssistant — lab 용 경량 구현 (ch13 캡스톤의 실행 가능한 축소판).
 
-ch13 본문은 전작 13장 이진 RF + ChromaDB + Claude + 승인 게이트를 통합한다.
+ch13 본문은 전작 14장 이진 RF + ChromaDB + Claude + 승인 게이트를 통합한다.
 이 경량 lab은 기본 ML을 규칙으로 대체하며, 모델 경로를 지정하면 실제 RF를 읽는다.
 RAG·LLM·외부 대응은 연결하지 않는다. RAG·LLM 연결은
 ch13 노트북(notebooks/instructor/ch13_security_assistant_capstone.ipynb) 에 있다.

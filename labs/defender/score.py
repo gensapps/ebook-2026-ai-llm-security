@@ -3,7 +3,7 @@ from __future__ import annotations
 import json, os
 from pathlib import Path
 
-LOGS = Path(os.environ.get("LAB_LOGS", "./_lab_logs"))
+LOGS = Path(os.environ.get("LAB_LOGS", "labs/_lab_logs"))
 
 
 def _load(name):

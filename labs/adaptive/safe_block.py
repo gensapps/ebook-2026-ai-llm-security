@@ -12,7 +12,7 @@ import ipaddress
 import math
 from pathlib import Path
 
-ROLLBACK_LOG = Path(os.environ.get("LAB_LOGS", "./_lab_logs")) / "rollback.jsonl"
+ROLLBACK_LOG = Path(os.environ.get("LAB_LOGS", "labs/_lab_logs")) / "rollback.jsonl"
 _DRY_RUN = os.environ.get("DRY_RUN", "1") == "1"
 
 

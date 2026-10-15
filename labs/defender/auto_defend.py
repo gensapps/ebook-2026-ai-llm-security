@@ -16,7 +16,7 @@ except ImportError:
     _sys.path.insert(0, str(Path(__file__).resolve().parent))
     from parse_zeek import stream_conn_log
 
-LOG = Path(os.environ.get("LAB_LOGS", "./_lab_logs")) / "defense_audit.jsonl"
+LOG = Path(os.environ.get("LAB_LOGS", "labs/_lab_logs")) / "defense_audit.jsonl"
 assistant = SecurityAssistant(dry_run=True)
 
 

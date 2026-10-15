@@ -1,0 +1,16 @@
+[
+ {
+  "id": "CVE-2021-44228",
+  "desc": "Apache Log4j2 JNDI RCE (Log4Shell)",
+  "severity": 10.0,
+  "source": "seed",
+  "pub_date": "2026-10-15"
+ },
+ {
+  "id": "CVE-2017-5638",
+  "desc": "Apache Struts2 Content-Type OGNL RCE",
+  "severity": 10.0,
+  "source": "seed",
+  "pub_date": "2026-10-15"
+ }
+]

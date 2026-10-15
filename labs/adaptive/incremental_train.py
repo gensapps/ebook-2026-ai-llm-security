@@ -55,5 +55,5 @@ def incremental_retrain(model_path: str, new_samples: list) -> int:
 
 if __name__ == "__main__":
     samples = [{"log": {"payload": "' OR 1=1--"}, "label": {"category": "SQLi"}}]
-    v = incremental_retrain("./_lab_logs/rf_model.pkl", samples)
+    v = incremental_retrain("labs/_lab_logs/rf_model.pkl", samples)
     print("새 버전:", v)

@@ -1,12 +1,12 @@
 {
   "built_on": "2026-10-16",
-  "book_version": "v20",
+  "book_version": "v21",
   "files": {
     ".env.example": "e9869829fc6e0ca32b91ae2fdc8e754c5bff0a44593c66ceeda4f16ecf5ca67d",
     ".gitignore": "230897fc4ec6323ed3f4b2cbe520f15bf6425ca525bf3c928681d38aad3faaf1",
     "ERRATA.md": "fd338494c1a50feeed9f5abd45a899033a9bd732fa2feff70f440a3556985ee4",
     "LICENSE": "550830e6973d14b81dc725fed2592a306c8adbe8e97de7d50850ca1494addf3d",
-    "README.md": "d8dd0147289813751cd3873cd9720ec38a87e02df24bbc5751d0532237e6359b",
+    "README.md": "e74919c21d1bf1f8d332653f4dd0079e7dfd4faac72b290cbf2af794627a8531",
     "labs/README.md": "c7396fe4055a9e5925b4c27e8463c9bdcd50585e601a765d6036b7a2a6671e6c",
     "labs/adaptive/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "labs/adaptive/analyze_unknown.py": "cda325f8079fc165354429af947ed331a781016cde8326b86f2ec859cc3ac74b",

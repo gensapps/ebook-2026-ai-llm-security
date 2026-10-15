@@ -1,6 +1,6 @@
 {
   "built_on": "2026-10-16",
-  "book_version": "v21",
+  "book_version": "v23",
   "files": {
     ".env.example": "e9869829fc6e0ca32b91ae2fdc8e754c5bff0a44593c66ceeda4f16ecf5ca67d",
     ".gitignore": "230897fc4ec6323ed3f4b2cbe520f15bf6425ca525bf3c928681d38aad3faaf1",

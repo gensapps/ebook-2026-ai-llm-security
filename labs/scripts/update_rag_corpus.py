@@ -10,7 +10,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 _USE_MOCK = os.environ.get("MOCK", "1") == "1"
-CORPUS_JSON = Path(os.environ.get("LAB_LOGS", "labs/_lab_logs")) / "rag_corpus.json"
+CORPUS_JSON = Path(os.environ.get("LAB_LOGS", "temp/lab_logs")) / "rag_corpus.json"
 
 _SEED = [
     {"id": "CVE-2021-44228", "desc": "Apache Log4j2 JNDI RCE (Log4Shell)", "severity": 10.0},

@@ -5,7 +5,8 @@ __pycache__/
 .ipynb_checkpoints/
 .DS_Store
 Thumbs.db
-# 실행 산출물(재생성 가능)
+# 실행 산출물(재생성 가능) — 실습 로그·모델은 temp/ 아래로 모인다(LAB_LOGS 로 변경 가능)
+temp/
 **/lab/
 **/*_lab/
 *.pcap
